@@ -48,8 +48,7 @@ class Solution {
             if(candies - (count + 1) < 0)
             {
                 distribution[count % num_people]+=candies;
-                break;
-                
+                break;  
             }
             else
             {
