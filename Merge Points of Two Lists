@@ -1,0 +1,40 @@
+Given pointers to the head nodes of  two linked lists that merge together at some point, find the node where the two lists merge. The merge point is where both lists point to the same node, i.e. they reference the same memory location. It is guaranteed that the two head nodes will be different, and neither will be NULL. If the lists share a common node, return that node's  data value.
+
+CODE
+
+
+    // Complete the findMergeNode function below.
+
+    /*
+     * For your reference:
+     *
+     * SinglyLinkedListNode {
+     *     int data;
+     *     SinglyLinkedListNode next;
+     * }
+     *
+     */
+    static int findMergeNode(SinglyLinkedListNode headA, SinglyLinkedListNode headB) {
+        SinglyLinkedListNode currentA = headA;
+    SinglyLinkedListNode currentB = headB;
+
+    //Do till the two nodes are the same
+    while(currentA != currentB){
+        //If you reached the end of one list start at the beginning of the other one
+        //currentA
+        if(currentA.next == null){
+            currentA = headB;
+        }else{
+            currentA = currentA.next;
+        }
+        //currentB
+        if(currentB.next == null){
+            currentB = headA;
+        }else{
+            currentB = currentB.next;
+        }
+    }
+    return currentB.data;
+
+    }
+
