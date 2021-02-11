@@ -1,0 +1,50 @@
+You have an empty sequence, and you will be given N queries. Each query is one of these three types:
+
+1 x  -Push the element x into the stack.
+2    -Delete the element present at the top of the stack.
+3    -Print the maximum element in the stack.
+CODE
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <stack>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+    int testcases, query, x;
+    std::stack<int> st;
+    cin>>testcases;
+    while(testcases--)
+    {
+        cin>>query;
+        switch(query)
+        {
+            case 1:
+            //push
+            cin>>x;
+            if(st.empty())
+                st.push(x);
+            else
+                st.push(max(x,st.top()));
+            break;
+            case 2:
+            //pop
+            if(!st.empty())
+                st.pop();
+            break;
+            case 3:
+            //max
+            cout<<st.top()<<endl;
+            break;
+            
+            default:
+            break;
+        }
+    }  
+    return 0;
+}
+ 
