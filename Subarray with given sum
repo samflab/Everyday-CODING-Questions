@@ -1,0 +1,63 @@
+Given an unsorted array A of size N that contains only non-negative integers, find a continuous sub-array which adds to a given number S.
+
+CODE
+// { Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+ // } Driver Code Ends
+
+
+// Function to find the subarray with given sum k
+// arr: input array
+// n: size of array
+vector<int> subarraySum(int arr[], int n, int s){
+    // Your code here
+    vector <int> ans;
+    int sum = arr[0], left = 0, right = 0;
+    while((left < n) && (right < n)){
+        if(sum < s){
+            right++;
+            sum += arr[right];
+        }
+        else if(sum > s){
+            sum -= arr[left];
+            left++;
+        }
+        else if(sum == s){
+            ans.push_back(left+1);
+            ans.push_back(right+1);
+            return ans;
+        }
+    }
+    ans.push_back(-1);
+    return ans;
+}
+
+// { Driver Code Starts.
+
+int main()
+ {
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        long long s;
+        cin>>n>>s;
+        int arr[n];
+        
+        for(int i=0;i<n;i++)
+            cin>>arr[i];
+        
+        vector<int>res;
+        res = subarraySum(arr, n, s);
+        
+        for(int i = 0;i<res.size();i++)
+            cout<<res[i]<<" ";
+        cout<<endl;
+        
+    }
+	return 0;
+}  // } Driver Code Ends
